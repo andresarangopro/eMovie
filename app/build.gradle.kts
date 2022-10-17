@@ -1,3 +1,5 @@
+import com.old.buildsrc.*
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -20,7 +22,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -57,10 +59,15 @@ android {
 dependencies {
     //std lib
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
     //app libs
-    implementation(AppDependencies.appLibraries)
+    _implementation(AppDependencies.appLibraries)
+    _implementation(AppDependencies.coroutinesLibraries)
+    _implementation(AppDependencies.retrofitLibraries)
+    _implementation(AppDependencies.hiltLibraries)
     //test libs
-    testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.androidTestLibraries)
+    _testImplementation(AppDependencies.testLibraries)
+    _androidTestImplementation(AppDependencies.androidTestLibraries)
 
 }
