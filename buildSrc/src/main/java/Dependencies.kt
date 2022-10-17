@@ -11,6 +11,9 @@ object Versions {
     const val jUnit = "4.13.2"
     const val androidxTest = "1.1.3"
     const val androidxTestEspresso = "3.4.0"
+    const val hiltVersion = "1.0.0"
+    const val navigationVersion = "2.4.2"
+    const val material3Version = "1.0.0-alpha13"
 }
 
 object DebugDependencies{
@@ -51,6 +54,7 @@ object Hilt {
 
 object AppDependencies {
 
+
     //android ui
     private const val androidXCore = "androidx.core:core-ktx:${Versions.coreKtx}"
     private const val androidxLifeCycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.runtimeKt}"
@@ -58,6 +62,10 @@ object AppDependencies {
     private const val androidxCompose = "androidx.compose.ui:ui:${Versions.compose_ui}"
     private const val androidxComposeUI = "androidx.compose.ui:ui-tooling-preview:${Versions.compose_ui}"
     private const val androidxComposeMaterials = "androidx.compose.material:material:${Versions.material}"
+    const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltVersion}"
+    const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationVersion}"
+    const val material = "androidx.compose.material3:material3:${Versions.material3Version}"
+    const val materialWindowSize = "androidx.compose.material3:material3-window-size-class:${Versions.material3Version}"
 
     //test libs
     //testImplementation
@@ -81,7 +89,10 @@ object AppDependencies {
         add(androidxCompose)
         add(androidxComposeUI)
         add(androidxComposeMaterials)
-
+        add(hiltNavigationCompose)
+        add(navigation)
+        add(material)
+        add(materialWindowSize)
     }
 
     val coroutinesLibraries = arrayListOf<String>().apply {

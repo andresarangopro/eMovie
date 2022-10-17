@@ -2,6 +2,8 @@ import com.old.buildsrc.*
 
 plugins {
     id("com.android.application")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
     kotlin("android")
 }
 
@@ -61,6 +63,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(mapOf("path" to ":domain")))
     implementation(project(mapOf("path" to ":data")))
+
     //app libs
     _implementation(AppDependencies.appLibraries)
     _implementation(AppDependencies.coroutinesLibraries)
@@ -69,5 +72,7 @@ dependencies {
     //test libs
     _testImplementation(AppDependencies.testLibraries)
     _androidTestImplementation(AppDependencies.androidTestLibraries)
+
+    kapt(Hilt.compiler)
 
 }
