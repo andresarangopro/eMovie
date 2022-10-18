@@ -7,16 +7,15 @@ data class MovieDetails(
     val title: String,
     val poster: String,
     val summary: String,
-    val cast: String,
-    val director: String,
-    val year: Int,
-    val trailer: String
+    val popularity: String,
+    val release_date: String,
+    val genres: List<Genre>
 ) {
 
     companion object {
         val empty = MovieDetails(
             0, String.empty(), String.empty(), String.empty(),
-            String.empty(), String.empty(), 0, String.empty()
+            String.empty(),  String.empty(), emptyList()
         )
     }
 }

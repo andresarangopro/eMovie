@@ -7,7 +7,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.old.emoviecompose.core.navigation.INavigationComponent
+import com.old.emoviecompose.presentation.movies.detailMovies.DetailMovieScreenRoute
 import com.old.emoviecompose.presentation.movies.listMovies.ListMoviesRoute
+import com.old.emoviecompose.presentation.movies.splashScreen.SplashScreenRoute
 
 class NavigationMovieComponent: INavigationComponent {
 
@@ -17,10 +19,14 @@ class NavigationMovieComponent: INavigationComponent {
     ) {
         NavHost(
             navController = navHostController,
-            startDestination = ListMoviesRoute.route,
+            startDestination = SplashScreenRoute.route,
             modifier = Modifier.padding(paddingValues)
         ) {
             ListMoviesRoute.composable(this, navHostController)
+            SplashScreenRoute.composable(this, navHostController)
+            DetailMovieScreenRoute.composable(
+                this,
+                navHostController)
 
         }
     }

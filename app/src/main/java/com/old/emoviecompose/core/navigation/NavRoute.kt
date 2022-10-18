@@ -78,6 +78,11 @@ interface Nav{
                 navHostController.popBackStack(navigationState.staticRoute, false)
                 onNavigated(navigationState)
             }
+            is NavigationState.PopBackStackToRoute -> {
+                navHostController.popBackStack()
+                navHostController.navigate(navigationState.staticRoute)
+                onNavigated(navigationState)
+            }
             is NavigationState.NavigateUp -> {
                 navHostController.navigateUp()
             }

@@ -19,6 +19,7 @@ interface RouteNavigator {
     fun navigateUp()
     fun popToRoute(route: String)
     fun navigateToRoute(route: String)
+    fun popBakStackToRoute(route: String)
 
     val navigationState: StateFlow<NavigationState>
 }
@@ -43,6 +44,9 @@ class EMovieRouteNavigator : RouteNavigator {
     override fun navigateUp() = navigate(NavigationState.NavigateUp())
 
     override fun navigateToRoute(route: String) = navigate(NavigationState.NavigateToRoute(route))
+
+
+    override fun popBakStackToRoute(route: String)  = navigate(NavigationState.PopBackStackToRoute(route))
 
     @VisibleForTesting
     fun navigate(state: NavigationState) {

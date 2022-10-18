@@ -50,6 +50,7 @@ val Orange90 = Color(0xFFfce1cf)
  * Error Color Definition
  */
 
+val Red1 = Color(0xFF330303)
 val Red10 = Color(0xFF410001)
 val Red20 = Color(0xFF680003)
 val Red30 = Color(0xFF930006)
@@ -68,6 +69,8 @@ val Gray40 = Color(0xFF717b8e)
 val Gray80 = Color(0xFFc6cad2)
 val Gray90 = Color(0xFFe3e5e8)
 val Gray95 = Color(0xFFf1f2f4)
+
+
 
 /**
  * Neutral Variant Definition

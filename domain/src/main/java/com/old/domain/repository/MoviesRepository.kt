@@ -8,7 +8,7 @@ import com.old.domain.model.MovieDetails
 
 
 interface MoviesRepository {
-    fun movies(category: String): Either<Failure, List<Movie>>
+    fun movies( category: String): Either<Failure, List<Movie>>
     fun movieDetails(movieId: Int): Either<Failure, MovieDetails>
 
 }

@@ -3,9 +3,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+
 android {
 
     compileSdk = AppConfig.compileSdk
+
 
     defaultConfig {
         minSdk = AppConfig.minSdk

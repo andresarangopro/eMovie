@@ -3,6 +3,18 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+val localTmdbApiKey: String? by lazy {
+    com.android.build.gradle.internal.cxx.configure.gradleLocalProperties(rootDir).getProperty("TMDB_API_KEY")
+}
+
+val remoteTmdbApiKey: String by lazy {
+    System.getenv("TMDB_API_KEY").orEmpty()
+}
+
+val tmdbApiKey: String by lazy {
+    if (localTmdbApiKey != null) localTmdbApiKey.orEmpty() else remoteTmdbApiKey
+}
+
 android {
 
     compileSdk = AppConfig.compileSdk
@@ -13,6 +25,8 @@ android {
 
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "TMDB_API_KEY", "\"$tmdbApiKey\"")
     }
 
 

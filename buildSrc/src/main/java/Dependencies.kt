@@ -2,6 +2,7 @@ package com.old.buildsrc
 
 object Versions {
     const val compose_ui = "1.2.1"
+    const val coilCompose = "2.0.0-rc01"
     const val material = "1.1.1"
     const val activityCompose = "1.3.1"
     const val runtimeKt ="2.3.1"
@@ -62,6 +63,8 @@ object AppDependencies {
     private const val androidxCompose = "androidx.compose.ui:ui:${Versions.compose_ui}"
     private const val androidxComposeUI = "androidx.compose.ui:ui-tooling-preview:${Versions.compose_ui}"
     private const val androidxComposeMaterials = "androidx.compose.material:material:${Versions.material}"
+    private const val composeRuntime = "androidx.compose.runtime:runtime-livedata:${Versions.compose_ui}"
+    private const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
     const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltVersion}"
     const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationVersion}"
     const val material = "androidx.compose.material3:material3:${Versions.material3Version}"
@@ -89,10 +92,12 @@ object AppDependencies {
         add(androidxCompose)
         add(androidxComposeUI)
         add(androidxComposeMaterials)
+        add(composeRuntime)
         add(hiltNavigationCompose)
         add(navigation)
         add(material)
         add(materialWindowSize)
+        add(coilCompose)
     }
 
     val coroutinesLibraries = arrayListOf<String>().apply {
