@@ -10,6 +10,9 @@ object Versions {
     const val versionCompiler= "1.3.1"
 
     const val jUnit = "4.13.2"
+    const val mockk = "1.10.0"
+    const val robolectric = "4.4"
+    const val kluent = "1.68"
     const val androidxTest = "1.1.3"
     const val androidxTestEspresso = "3.4.0"
     const val hiltVersion = "1.0.0"
@@ -73,6 +76,9 @@ object AppDependencies {
     //test libs
     //testImplementation
     private const val jUnit = "junit:junit:${Versions.jUnit}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
+    const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
 
     //androidTestImplementation
     private const val androidxTest = "androidx.test.ext:junit:${Versions.androidxTest}"
@@ -135,5 +141,8 @@ object AppDependencies {
 
     val testLibraries = arrayListOf<String>().apply {
         add(jUnit)
+        add(mockk)
+        add(robolectric)
+        add(kluent)
     }
 }

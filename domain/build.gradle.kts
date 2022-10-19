@@ -37,6 +37,7 @@ android {
 }
 
 dependencies {
+    testImplementation("junit:junit:4.12")
     _implementation(com.old.buildsrc.AppDependencies.coroutinesLibraries)
     _implementation(com.old.buildsrc.AppDependencies.retrofitLibraries)
     _implementation(com.old.buildsrc.AppDependencies.hiltLibraries)

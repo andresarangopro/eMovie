@@ -18,7 +18,7 @@ class DetailMovieViewModel @Inject constructor(
     private val getMoviesDetailsUseCase: GetMoviesDetailsUseCase
 ): BaseViewModel<EventsDetailViewModel, StatesDetailMovieViewModel>(), RouteNavigator by routeNavigator {
 
-    private val _index = DetailMovieScreenRoute.getIndexFrom(savedStateHandle)
+     private val _index = DetailMovieScreenRoute.getIndexFrom(savedStateHandle)
      val index = _index
 
     private val _movieDetails: MutableLiveData<MovieDetails> = MutableLiveData()
