@@ -3,12 +3,11 @@ package com.old.emoviecompose.presentation.movies.detailMovies
 
 
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.TopAppBar
@@ -19,7 +18,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +35,9 @@ import com.old.emoviecompose.core.navigation.getOrThrow
 import com.old.emoviecompose.custom.component.ImageResourceWithGradient
 import com.old.emoviecompose.ui.theme.EMovieComposeTheme
 import com.old.emoviecompose.R
+import com.old.emoviecompose.core.extensions.getYearOfReleaseDate
+import com.old.emoviecompose.custom.component.BoxInfo
+import com.old.emoviecompose.custom.component.IconBoxInfo
 import com.old.emoviecompose.ui.theme.Gray50
 import com.old.emoviecompose.ui.theme.Yellow50
 
@@ -90,6 +94,8 @@ fun ContentPage(
                 color = Color.Black
             ) {
                 val movieDetail = detailMovieViewModel.movieDetails.observeAsState()
+                val context = LocalContext.current
+
                 movieDetail.value?.let {
                     Box {
                         ImageResourceWithGradient(
@@ -104,9 +110,8 @@ fun ContentPage(
                         ) {
                             Column(
                                 modifier = Modifier
-                                    .padding(0.dp, 310.dp, 0.dp, 0.dp)
-                                    .verticalScroll(rememberScrollState())
-                                    .weight(6f)
+                                    .weight(1f),
+                                verticalArrangement = Arrangement.Bottom
                             ){
                                 Row(
                                     modifier = Modifier
@@ -138,7 +143,7 @@ fun ContentPage(
                                         ),
                                     horizontalArrangement = Arrangement.Center
                                 ) {
-                                    BoxInfo("2013",modifier = Modifier
+                                    BoxInfo(it.release_date.getYearOfReleaseDate(),modifier = Modifier
                                         .padding(
                                             10.dp, 0.dp
                                         )
@@ -153,7 +158,7 @@ fun ContentPage(
                                             .size(40.dp, 40.dp)
                                             .clip(RoundedCornerShape(10.dp))
                                             .background(Gray50))
-                                    BoxInfo("en",
+                                    IconBoxInfo(it.vote_average,
                                         modifier = Modifier
                                             .padding(
                                                 10.dp, 0.dp
@@ -194,7 +199,10 @@ fun ContentPage(
                                             top = 8.dp
                                         )) {
                                     Button(
-                                        onClick = { /*TODO*/ },
+                                        onClick = {
+                                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(detailMovieViewModel.getLinkTrailer()))
+                                            context.startActivity(intent)
+                                        },
                                         modifier = Modifier
                                             .border( width = 2.dp,
                                                 color = Color.White,
@@ -217,7 +225,8 @@ fun ContentPage(
                             Column(
                                 modifier = Modifier
                                     .verticalScroll(rememberScrollState())
-                                    .weight(1f)
+                                    .padding(10.dp,10.dp)
+                                    .weight(0.2f)
                             ) {
                                 Text(
                                     text = "Movie Plot",
@@ -238,20 +247,6 @@ fun ContentPage(
                 }
             }
         }
-    }
-
-}
-@Composable
-fun BoxInfo(str: String, modifier: Modifier = Modifier){
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier =modifier){
-        Text(
-            text = str,
-            fontSize= 18.sp,
-            textAlign = TextAlign.Center,
-            color = Color.Black,
-        )
     }
 
 }

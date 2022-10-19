@@ -6,10 +6,8 @@ import com.old.data.platform.NetworkHandler
 import com.old.domain.entities.MovieDetailsEntity
 import com.old.domain.entities.MovieEntity
 import com.old.domain.entities.ResultsEntity
-import com.old.domain.model.Either
-import com.old.domain.model.Failure
-import com.old.domain.model.Movie
-import com.old.domain.model.MovieDetails
+import com.old.domain.entities.TrailerEntity
+import com.old.domain.model.*
 import com.old.domain.repository.MoviesRepository
 import com.old.domain.repository.MoviesApi
 import com.old.domain.repository.toMoviesList
@@ -32,6 +30,10 @@ class MovieRepositoryImp
 
     override fun movieDetails(authHeader: String, movieId: Int): Call<MovieDetailsEntity> =
         moviesApi.movieDetails(authHeader = authHeader, movieId = movieId)
+
+    override fun movieVideos(authHeader: String, movieId: Int): Call<TrailerEntity.TrailerResultsEntity> =
+        moviesApi.movieVideos(authHeader = authHeader, movieId= movieId)
+
 }
 
 class Network
@@ -57,6 +59,17 @@ class Network
                 service.movieDetails(tmdbApiKey,movieId),
                 { it.toMovieDetails() },
                 MovieDetailsEntity.empty
+            )
+            false -> Either.Left(Failure.NetworkConnection)//TODO(when false it should return located cache)
+        }
+    }
+
+    override fun movieTrailer(movieId: Int): Either<Failure, List<Trailer>> {
+        return when (networkHandler.isNetworkAvailable()) {
+            true -> request(
+                service.movieVideos(tmdbApiKey,movieId),
+                { it.toTrailerList() },
+                TrailerEntity.TrailerResultsEntity(emptyList())
             )
             false -> Either.Left(Failure.NetworkConnection)//TODO(when false it should return located cache)
         }

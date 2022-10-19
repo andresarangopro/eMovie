@@ -11,13 +11,14 @@ data class MovieDetailsEntity(
     private val overview: String,
     private val popularity: String,
     private val release_date: String,
+    private val vote_average: String,
     private val genres: List<GenreEntity>
 ) {
 
     companion object {
         val empty = MovieDetailsEntity(
             0, String.empty(), String.empty(), String.empty(),
-            String.empty(), String.empty(), emptyList()
+            String.empty(), String.empty(),String.empty(), emptyList()
         )
     }
 
@@ -29,6 +30,7 @@ data class MovieDetailsEntity(
             overview,
             popularity,
             release_date,
+            vote_average,
             genres.toGenreList())
 
 }
