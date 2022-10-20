@@ -18,10 +18,9 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,9 +28,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.old.domain.model.Movie
 import com.old.emoviecompose.R
 import com.old.emoviecompose.core.extensions.listSizeForRecommendations
-import com.old.emoviecompose.mappers.MovieView
 import com.old.emoviecompose.presentation.movies.listMovies.MoveScreen
 
 @Composable
@@ -98,29 +97,27 @@ fun IconBoxInfo(str: String, modifier: Modifier = Modifier){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun verticalGrid(modifier: Modifier = Modifier, movies: List<MovieView>?, moveScreen: MoveScreen){
+fun VerticalGrid(movies: List<Movie>?, moveScreen: MoveScreen){
     LazyVerticalGrid(
         modifier = Modifier.height(400.dp),
         columns = GridCells.Fixed(2),
         contentPadding = PaddingValues(8.dp),
     ) {
-        movies?.size?.let {
+        movies?.size?.let { it ->
             items(it.listSizeForRecommendations()) {
                 Card(modifier = Modifier
                     .padding(8.dp)
                     .background(Color.Transparent)
                     .clickable {
-                        movies?.get(it)?.id?.let { it1 -> moveScreen.toDetailScreen(it1) }
+                        movies[it].id.let { it1 -> moveScreen.toDetailScreen(it1) }
                     },
                     shape = RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp),
                 ) {
-                    movies?.get(it)?.poster?.let {
-                        ImageResource(url = it,
-                            modifier= Modifier
-                                .height(210.dp)
-                                .fillMaxWidth()
-                        )
-                    }
+                    ImageResource(url = movies[it].poster,
+                        modifier= Modifier
+                            .height(210.dp)
+                            .fillMaxWidth()
+                    )
                 }
             }
         }
@@ -136,7 +133,7 @@ fun Title(str:String){
         fontSize = 16.sp,
         fontWeight = FontWeight.Bold,
         textAlign = TextAlign.Start,
-        color = colorResource(id = R.color.white),
+        color = White,
         modifier = Modifier
             .padding(8.dp, 8.dp, 0.dp, 0.dp)
             .fillMaxWidth()
@@ -146,8 +143,7 @@ fun Title(str:String){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LazyRowItemsDemo(
-    modifier: Modifier = Modifier,
-    movies: List<MovieView>?,
+    movies: List<Movie>?,
     moveScreen: MoveScreen,
 
     ) {

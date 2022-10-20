@@ -1,12 +1,7 @@
 package com.old.emoviecompose.core.platform
 
-import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.lifecycle.LifecycleOwner
+
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.old.domain.model.Failure
@@ -18,7 +13,6 @@ abstract class BaseViewModel<in Event, State>  : ViewModel() {
     val failure: LiveData<Failure> = _failure
 
     protected fun handleFailure(failure: Failure) {
-        Log.d("movieHandle","${failure}")
         _failure.value = failure
     }
 
@@ -33,15 +27,6 @@ abstract class BaseViewModel<in Event, State>  : ViewModel() {
     protected abstract fun manageEvent(event: Event)
 }
 
-
-fun <T : Any, L : LiveData<T>> LifecycleOwner.observe(liveData: L, body: ( T?) -> Unit) =
-    liveData.observe(this, Observer(body))
-
-
-
-
-fun <L : LiveData<Failure>> LifecycleOwner.failure(liveData: L, body: (Failure?) -> Unit) =
-    liveData.observe(this, Observer(body))
 
 data class States<out T>(private val content:T) {
 

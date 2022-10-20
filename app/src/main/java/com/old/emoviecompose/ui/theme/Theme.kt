@@ -1,15 +1,11 @@
 package com.old.emoviecompose.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.platform.LocalContext
 
@@ -34,7 +30,7 @@ private val DarkColorPalette = darkColorScheme(
     onErrorContainer = Red90,
     background = Gray10,
     onBackground = Gray90,
-    surface = Gray10,
+    surface = Black,
     onSurface = Gray90,
     inverseSurface = Gray90,
     inverseOnSurface = Gray10
@@ -60,7 +56,7 @@ private val LightColorPalette = lightColorScheme(
     onErrorContainer = Red10,
     background = Gray10,
     onBackground = Gray10,
-    surface = Gray90,
+    surface = Black,
     onSurface = Gray30,
     inverseSurface = Gray20,
     inverseOnSurface = Gray95

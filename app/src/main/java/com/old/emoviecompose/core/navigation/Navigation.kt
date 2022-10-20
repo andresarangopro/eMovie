@@ -19,7 +19,7 @@ sealed class NavigationState{
 interface INavigationComponent{
 
     @Composable
-    fun navigationComponent(navHostController: NavHostController,
+    fun NavigationComponent(navHostController: NavHostController,
                             paddingValues: PaddingValues){}
 
 }

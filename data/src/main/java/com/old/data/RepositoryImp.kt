@@ -1,3 +1,5 @@
+@file:Suppress("KotlinConstantConditions")
+
 package com.old.data
 
 
@@ -65,10 +67,10 @@ class LocalMovieDataSource
         return movieDetailDao.getByMovieId(movieId)
     }
 
-    override fun createMovieDetail(movieDetail: MovieDetails) {
-        movieDetailDao.insertMovie(movieDetail.toMovieDatabaseEntity())
-        movieDetail.genres.forEach {
-            movieDetailDao.insertGenre(it.toGenreDatabaseEntity(movieDetail.id))
+    override fun createMovieDetail(movieDetails: MovieDetails) {
+        movieDetailDao.insertMovie(movieDetails.toMovieDatabaseEntity())
+        movieDetails.genres.forEach {
+            movieDetailDao.insertGenre(it.toGenreDatabaseEntity(movieDetails.id))
         }
     }
 
@@ -82,6 +84,7 @@ class LocalMovieDataSource
 
 }
 
+@Suppress("KotlinConstantConditions")
 class RepositoryImp
 @Inject constructor(
     private val networkHandler: NetworkHandler,
@@ -90,16 +93,15 @@ class RepositoryImp
 ) : MoviesRepository {
 
     override fun movies(category: String): Either<Failure, List<Movie>> {
-        var request: Either<Failure, List<Movie>>
-        when (networkHandler.isNetworkAvailable()) {
+        val request: Either<Failure, List<Movie>> = when (networkHandler.isNetworkAvailable()) {
             true -> {
-                request = request(
+                request(
                     service.movies(tmdbApiKey, category),
                     { it.toMoviesList() },
                     ResultsEntity(emptyList())
                 )
             }
-            false -> request= getLocalMovies(category)
+            false -> getLocalMovies(category)
         }
 
         request.fold(
@@ -124,16 +126,15 @@ class RepositoryImp
 
 
     override fun movieDetails(movieId: Int): Either<Failure, MovieDetails> {
-        var request: Either<Failure, MovieDetails>
-        when (networkHandler.isNetworkAvailable()) {
+        val request: Either<Failure, MovieDetails> = when (networkHandler.isNetworkAvailable()) {
             true -> {
-                request = request(
+                request(
                     service.movieDetails(tmdbApiKey, movieId),
                     { it.toMovieDetails() },
                     MovieDetailsEntity.empty
                 )
             }
-            false -> request = getLocalMovieDetail(movieId)
+            false -> getLocalMovieDetail(movieId)
         }
         request.fold(
             fnL = {},
@@ -156,16 +157,15 @@ class RepositoryImp
 
 
     override fun movieTrailer(movieId: Int): Either<Failure, List<Trailer>> {
-        var request: Either<Failure, List<Trailer>>
-        when (networkHandler.isNetworkAvailable()) {
+        val request: Either<Failure, List<Trailer>> = when (networkHandler.isNetworkAvailable()) {
             true -> {
-                request = request(
+                request(
                     service.movieVideos(tmdbApiKey,movieId),
                     { it.toTrailerList() },
                     TrailerEntity.TrailerResultsEntity(emptyList())
                 )
             }
-            false -> request = getLocalTrailer(movieId)
+            false -> getLocalTrailer(movieId)
         }
 
         request.fold(

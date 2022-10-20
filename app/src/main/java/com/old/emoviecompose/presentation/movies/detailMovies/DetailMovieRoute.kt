@@ -3,12 +3,13 @@ package com.old.emoviecompose.presentation.movies.detailMovies
 
 
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.TopAppBar
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
@@ -16,8 +17,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -59,29 +60,27 @@ object DetailMovieScreenRoute: NavRoute<DetailMovieViewModel> {
     override fun Content(viewModel: DetailMovieViewModel) = ContentPage(viewModel)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ContentPage(
     detailMovieViewModel: DetailMovieViewModel
 
 ) {
-    EMovieComposeTheme() {
-
+    EMovieComposeTheme{
         Scaffold(
             topBar = {
-                TopAppBar(
-                    backgroundColor = Color.Black,
+                SmallTopAppBar(
                     navigationIcon = {
                         IconButton(onClick = { detailMovieViewModel.toMainScreen()}) {
                             Icon(
                                 painter = painterResource(R.drawable.ic_backarrow),
-                                contentDescription = "Ir hacia atrás",
+                                contentDescription = stringResource(id = R.string.goBack),
                                 tint = Color.White
                             )
                         }
                     },
-                    title = {
-
-                    }
+                    title = {}
                 )
             }
         ) {
@@ -90,7 +89,6 @@ fun ContentPage(
                 color = Color.Black
             ) {
                 val movieDetail = detailMovieViewModel.movieDetails.observeAsState()
-                val context = LocalContext.current
 
                 movieDetail.value?.let {
                     Box {
@@ -219,7 +217,7 @@ fun ContentPage(
                             Column(
                                 modifier = Modifier
                                     .verticalScroll(rememberScrollState())
-                                    .padding(10.dp,10.dp)
+                                    .padding(10.dp, 10.dp)
                                     .weight(0.2f)
                             ) {
                                 Text(

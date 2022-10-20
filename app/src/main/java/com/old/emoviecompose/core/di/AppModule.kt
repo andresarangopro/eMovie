@@ -28,7 +28,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-    private val DATABASE_NAME = "movies_db"
+    private val databaseName = "movies_db"
 
     @Provides
     fun provideContext(
@@ -74,7 +74,7 @@ class AppModule {
     ): MovieDatabase = Room.databaseBuilder(
         app,
         MovieDatabase::class.java,
-        DATABASE_NAME
+        databaseName
     ).build()
 
     @Provides

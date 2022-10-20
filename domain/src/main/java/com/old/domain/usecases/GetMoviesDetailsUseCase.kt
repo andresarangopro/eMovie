@@ -2,7 +2,7 @@ package com.old.domain.usecases
 
 import com.old.domain.model.MovieDetails
 import com.old.domain.repository.MoviesRepository
-import com.old.domainmodel.UseCase
+import com.old.domain.model.UseCase
 import javax.inject.Inject
 
 class GetMoviesDetailsUseCase @Inject constructor(private val moviesRepository: MoviesRepository):

@@ -1,7 +1,6 @@
 package com.old.domain.model
 
 import com.old.domain.empty
-import com.old.domain.entities.TrailerEntity
 
 class Trailer(
     val name: String,

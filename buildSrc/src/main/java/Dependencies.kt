@@ -1,9 +1,6 @@
-package com.old.buildsrc
-
 object Versions {
     const val compose_ui = "1.2.1"
     const val coilCompose = "2.0.0-rc01"
-    const val material = "1.1.1"
     const val activityCompose = "1.3.1"
     const val runtimeKt ="2.3.1"
     const val coreKtx = "1.7.0"
@@ -39,28 +36,28 @@ object Kotlin {
 }
 
 object Retrofit{
-    const val retrofitVersion = "2.9.0"
-    const val okHttpLoggingInterceptorVersion = "4.9.0"
-    const val retrofitGson = "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    const val retrofit = "com.squareup.retrofit2:retrofit:${retrofitVersion}"
-    const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${okHttpLoggingInterceptorVersion}"
+    private const val retrofitVersion = "2.9.0"
+    private const val okHttpLoggingInterceptorVersion = "4.9.0"
+
+    const val retrofitGson = "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    const val retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$okHttpLoggingInterceptorVersion"
 }
 
 object Hilt {
     private const val version = "2.42"
 
-    const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
     const val android = "com.google.dagger:hilt-android:$version"
     const val compiler = "com.google.dagger:hilt-compiler:$version"
     const val testing = "com.google.dagger:hilt-android-testing:$version"
 }
 
 object Room {
-    const val roomVersion = "2.2.5"
+    private const val roomVersion = "2.2.5"
 
     const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
     const val roomLib = "androidx.room:room-runtime:$roomVersion"
-    const val roomktx = "androidx.room:room-ktx:$roomVersion"
+    const val roomKtx = "androidx.room:room-ktx:$roomVersion"
 }
 
 
@@ -74,21 +71,20 @@ object AppDependencies {
     private const val androidxActivity = "androidx.activity:activity-compose:${Versions.activityCompose}"
     private const val androidxCompose = "androidx.compose.ui:ui:${Versions.compose_ui}"
     private const val androidxComposeUI = "androidx.compose.ui:ui-tooling-preview:${Versions.compose_ui}"
-    private const val androidxComposeMaterials = "androidx.compose.material:material:${Versions.material}"
     private const val composeRuntime = "androidx.compose.runtime:runtime-livedata:${Versions.compose_ui}"
     private const val coilCompose = "io.coil-kt:coil-compose:${Versions.coilCompose}"
-    const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltVersion}"
-    const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationVersion}"
-    const val material = "androidx.compose.material3:material3:${Versions.material3Version}"
-    const val materialWindowSize = "androidx.compose.material3:material3-window-size-class:${Versions.material3Version}"
-    const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:${Versions.navigationAnimation}"
+    private const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltVersion}"
+    private const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationVersion}"
+    private const val material = "androidx.compose.material3:material3:${Versions.material3Version}"
+    private const val materialWindowSize = "androidx.compose.material3:material3-window-size-class:${Versions.material3Version}"
+    private const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:${Versions.navigationAnimation}"
 
     //test libs
     //testImplementation
     private const val jUnit = "junit:junit:${Versions.jUnit}"
-    const val mockk = "io.mockk:mockk:${Versions.mockk}"
-    const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
-    const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
+    private const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    private const val robolectric = "org.robolectric:robolectric:${Versions.robolectric}"
+    private const val kluent = "org.amshove.kluent:kluent:${Versions.kluent}"
 
     //androidTestImplementation
     private const val androidxTest = "androidx.test.ext:junit:${Versions.androidxTest}"
@@ -98,8 +94,8 @@ object AppDependencies {
 
     //debug
     //debugImplementation
-    const val androidCompoeUITooling = "androidx.compose.ui:ui-tooling:${Versions.compose_ui}"
-    const val androidComposeUiTestManifest ="androidx.compose.ui:ui-test-manifest:${Versions.compose_ui}"
+    private const val androidCompoeUITooling = "androidx.compose.ui:ui-tooling:${Versions.compose_ui}"
+    private const val androidComposeUiTestManifest ="androidx.compose.ui:ui-test-manifest:${Versions.compose_ui}"
 
     val appLibraries = arrayListOf<String>().apply {
         add(androidXCore)
@@ -107,7 +103,6 @@ object AppDependencies {
         add(androidxActivity)
         add(androidxCompose)
         add(androidxComposeUI)
-        add(androidxComposeMaterials)
         add(composeRuntime)
         add(hiltNavigationCompose)
         add(navigation)

@@ -22,14 +22,14 @@ class DetailMovieViewModel @Inject constructor(
     private val playTrailerUseCase: PlayTrailerUseCase
 ): BaseViewModel<EventsDetailViewModel, StatesDetailMovieViewModel>(), RouteNavigator by routeNavigator {
 
-     private val _index:Int = DetailMovieScreenRoute.getIndexFrom(savedStateHandle)
-     val index = _index
+    private val _index:Int = DetailMovieScreenRoute.getIndexFrom(savedStateHandle)
+    private val index = _index
 
     private val _movieDetails: MutableLiveData<MovieDetails> = MutableLiveData()
     val movieDetails: LiveData<MovieDetails> = _movieDetails
 
     private val _movieTrailers: MutableLiveData<List<Trailer>> = MutableLiveData()
-    val movieTrailers: LiveData<List<Trailer>> = _movieTrailers
+    private val movieTrailers: LiveData<List<Trailer>> = _movieTrailers
 
     init {
         loadMovieDetails(index)
@@ -41,7 +41,7 @@ class DetailMovieViewModel @Inject constructor(
 
     fun playTrailer() = playTrailerUseCase(PlayTrailerUseCase.Params(getTrailer().key), viewModelScope)
 
-    fun loadMovieDetails(movieId: Int) =
+    private fun loadMovieDetails(movieId: Int) =
     getMoviesDetailsUseCase(GetMoviesDetailsUseCase.Params(movieId), viewModelScope) {
         it.fold(
             ::handleFailure,
@@ -49,8 +49,8 @@ class DetailMovieViewModel @Inject constructor(
         )
     }
 
-    fun loadMovieTrailers(movieId: Int) =
-    getTrailerListUseCase(GetTrailerListUseCase.Params(index), viewModelScope) {
+    private fun loadMovieTrailers(movieId: Int) =
+    getTrailerListUseCase(GetTrailerListUseCase.Params(movieId), viewModelScope) {
         it.fold(
             ::handleFailure,
             ::handleTrailers
@@ -58,22 +58,13 @@ class DetailMovieViewModel @Inject constructor(
     }
 
     private fun handleMovieDetails(movie: MovieDetails) {
-        Log.d("movieHandle","${movie}")
         _movieDetails.value = MovieDetails(
             movie.id, movie.title, movie.poster,
             movie.summary, movie.popularity, movie.release_date,movie.vote_average, movie.genres
         )
     }
 
-    fun getLinkTrailer(): String{
-        var trailer = getTrailer()
-        if(trailer.site == "YouTube"){
-            return "https://www.youtube.com/watch?v=${trailer.key}"
-        }
-        return ""
-    }
-
-    fun getTrailer(): Trailer {
+    private fun getTrailer(): Trailer {
         if(movieTrailers.value?.size!! > 0){
             return movieTrailers.value!![0]
         }

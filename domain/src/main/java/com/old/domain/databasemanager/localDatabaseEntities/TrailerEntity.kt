@@ -2,7 +2,6 @@ package com.old.domain.databasemanager.localDatabaseEntities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "trailers")

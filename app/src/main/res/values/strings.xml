@@ -3,4 +3,7 @@
     <string name="upcoming">Próximos estrenos</string>
     <string name="trend">Recomendados para ti</string>
     <string name="top_rated">Tendencias</string>
+    <string name="goBack">Ir hacia atrás</string>
+    <string name="logoEmovie">logo Emovie</string>
+    <string name="language">Idioma</string>
 </resources>

@@ -1,7 +1,5 @@
-package com.old.domainmodel
+package com.old.domain.model
 
-import com.old.domain.model.Either
-import com.old.domain.model.Failure
 import kotlinx.coroutines.*
 
 /**

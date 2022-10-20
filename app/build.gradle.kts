@@ -1,5 +1,3 @@
-import com.old.buildsrc.*
-
 plugins {
     id("com.android.application")
     id ("kotlin-kapt")
@@ -65,13 +63,13 @@ dependencies {
     implementation(project(mapOf("path" to ":data")))
 
     //app libs
-    _implementation(AppDependencies.appLibraries)
-    _implementation(AppDependencies.coroutinesLibraries)
-    _implementation(AppDependencies.retrofitLibraries)
-    _implementation(AppDependencies.hiltLibraries)
+    implementationOwn(AppDependencies.appLibraries)
+    implementationOwn(AppDependencies.coroutinesLibraries)
+    implementationOwn(AppDependencies.retrofitLibraries)
+    implementationOwn(AppDependencies.hiltLibraries)
     //test libs
-    _testImplementation(AppDependencies.testLibraries)
-    _androidTestImplementation(AppDependencies.androidTestLibraries)
+    testImplementationOwn(AppDependencies.testLibraries)
+    androidTestImplementationOwn(AppDependencies.androidTestLibraries)
 
     kapt(Hilt.compiler)
 

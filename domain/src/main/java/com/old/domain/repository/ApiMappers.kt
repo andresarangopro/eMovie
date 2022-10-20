@@ -5,7 +5,6 @@ import com.old.domain.databasemanager.localDatabaseEntities.MovieEntity
 import com.old.domain.databasemanager.localDatabaseEntities.MovieWithGenresEntity
 import com.old.domain.databasemanager.localDatabaseEntities.TrailerEntity
 import com.old.domain.entities.GenreEntity
-import com.old.domain.entities.GenresList
 import com.old.domain.entities.ResultsEntity
 import com.old.domain.model.Genre
 import com.old.domain.model.Movie

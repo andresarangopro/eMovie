@@ -7,7 +7,5 @@ object AppConfig {
     const val versionName = "1.0.0"
 
     const val androidTestInstrumentation = "androidx.test.runner.AndroidJUnitRunner"
-    const val proguardConsumerRules =  "consumer-rules.pro"
-    const val dimension = "environment"
 }
 

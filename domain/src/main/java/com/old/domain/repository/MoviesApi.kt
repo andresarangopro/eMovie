@@ -1,7 +1,6 @@
 package com.old.domain.repository
 
 import com.old.domain.entities.MovieDetailsEntity
-import com.old.domain.entities.MovieEntity
 import com.old.domain.entities.ResultsEntity
 import com.old.domain.entities.TrailerEntity
 import retrofit2.Call

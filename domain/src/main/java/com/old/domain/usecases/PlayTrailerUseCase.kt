@@ -3,7 +3,7 @@ package com.old.domain.usecases
 import android.content.Context
 import com.old.domain.model.Either
 import com.old.domain.model.Failure
-import com.old.domainmodel.UseCase
+import com.old.domain.model.UseCase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 

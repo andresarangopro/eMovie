@@ -51,7 +51,7 @@ android {
 dependencies {
 
      implementation(project(mapOf("path" to ":domain")))
-    _implementation(com.old.buildsrc.AppDependencies.coroutinesLibraries)
-    _implementation(com.old.buildsrc.AppDependencies.retrofitLibraries)
-    _implementation(com.old.buildsrc.AppDependencies.hiltLibraries)
+    implementationOwn(AppDependencies.coroutinesLibraries)
+    implementationOwn(AppDependencies.retrofitLibraries)
+    implementationOwn(AppDependencies.hiltLibraries)
 }

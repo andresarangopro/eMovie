@@ -5,9 +5,8 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -22,7 +21,7 @@ import com.old.emoviecompose.ui.theme.EMovieComposeTheme
 import  com.old.emoviecompose.R
 import com.old.emoviecompose.custom.component.LazyRowItemsDemo
 import com.old.emoviecompose.custom.component.Title
-import com.old.emoviecompose.custom.component.verticalGrid
+import com.old.emoviecompose.custom.component.VerticalGrid
 
 object ListMoviesRoute : NavRoute<ListMoviesViewModel> {
 
@@ -40,7 +39,7 @@ object ListMoviesRoute : NavRoute<ListMoviesViewModel> {
 fun ContentPage(
     listMoviesViewModel: ListMoviesViewModel
 ) {
-    EMovieComposeTheme() {
+    EMovieComposeTheme{
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = Color.Black
@@ -65,7 +64,7 @@ fun ContentPage(
                         .fillMaxWidth()
                         .size(15.dp)
                     ,
-                    contentDescription = "logo Emovie"
+                    contentDescription = stringResource(id = R.string.logoEmovie)
 
                 )
                 Title(str = stringResource(id = R.string.upcoming))
@@ -91,17 +90,25 @@ fun ContentPage(
                     .padding(10.dp, 0.dp)
                     .align(Alignment.Start),
                     horizontalArrangement = Arrangement.SpaceBetween) {
-                    ButtonFilter(str = "Idioma", Modifier.weight(0.5f)
-                        .border(width = 2.dp,
-                            color = Color.White,
-                            shape = RoundedCornerShape(30.dp)))
+                    ButtonFilter(str = stringResource(id = R.string.language),
+                        Modifier
+                            .weight(0.5f)
+                            .border(
+                                width = 2.dp,
+                                color = Color.White,
+                                shape = RoundedCornerShape(30.dp)
+                            ))
                     Spacer(Modifier.weight(0.1f))
-                    ButtonFilter(str = "Año", Modifier.weight(0.5f)
-                        .border(width = 2.dp,
-                            color = Color.White,
-                            shape = RoundedCornerShape(30.dp)))
+                    ButtonFilter(str = "Año",
+                        Modifier
+                            .weight(0.5f)
+                            .border(
+                                width = 2.dp,
+                                color = Color.White,
+                                shape = RoundedCornerShape(30.dp)
+                            ))
                 }
-                verticalGrid(movies = moviesTopRated.value, moveScreen = listMoviesViewModel)
+                VerticalGrid(movies = moviesTopRated.value, moveScreen = listMoviesViewModel)
             }
         }
     }

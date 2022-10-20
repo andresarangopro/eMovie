@@ -4,7 +4,7 @@ import com.old.domain.model.Either
 import com.old.domain.model.Failure
 import com.old.domain.model.Trailer
 import com.old.domain.repository.MoviesRepository
-import com.old.domainmodel.UseCase
+import com.old.domain.model.UseCase
 import javax.inject.Inject
 
 class GetTrailerListUseCase

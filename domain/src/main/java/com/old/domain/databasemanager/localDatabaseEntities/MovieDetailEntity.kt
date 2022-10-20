@@ -3,7 +3,6 @@ package com.old.domain.databasemanager.localDatabaseEntities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.old.domain.entities.GenreEntity
 
 @Entity(tableName = "movies_details")
 data class MovieDetailEntity(

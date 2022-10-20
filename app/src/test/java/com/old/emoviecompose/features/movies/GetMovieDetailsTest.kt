@@ -4,7 +4,6 @@ import com.old.domain.model.Either
 import com.old.domain.model.MovieDetails
 import com.old.domain.repository.MoviesRepository
 import com.old.domain.usecases.GetMoviesDetailsUseCase
-import com.old.domain.usecases.GetMoviesUseCase
 import com.old.emoviecompose.UnitTest
 import io.mockk.every
 import io.mockk.impl.annotations.MockK

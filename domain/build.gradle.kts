@@ -1,5 +1,3 @@
-
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -40,13 +38,14 @@ android {
 }
 
 dependencies {
-    testImplementation("junit:junit:4.12")
-    _implementation(com.old.buildsrc.AppDependencies.coroutinesLibraries)
-    _implementation(com.old.buildsrc.AppDependencies.retrofitLibraries)
-    _implementation(com.old.buildsrc.AppDependencies.hiltLibraries)
 
+    implementationOwn(AppDependencies.coroutinesLibraries)
+    implementationOwn(AppDependencies.retrofitLibraries)
+    implementationOwn(AppDependencies.hiltLibraries)
+
+    testImplementationOwn(AppDependencies.testLibraries)
     //room
-    api(com.old.buildsrc.Room.roomLib)
-    implementation(com.old.buildsrc.Room.roomktx)
-    kapt(com.old.buildsrc.Room.roomCompiler)
+    api(Room.roomLib)
+    implementation(Room.roomKtx)
+    kapt(Room.roomCompiler)
 }

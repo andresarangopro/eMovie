@@ -1,31 +1,31 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 //util functions for adding the different type dependencies from build.gradle file
-fun DependencyHandler._kapt(list: List<String>) {
+fun DependencyHandler.kaptOwn(list: List<String>) {
     list.forEach { dependency ->
         add("kapt", dependency)
     }
 }
 
-fun DependencyHandler._implementation(list: List<String>) {
+fun DependencyHandler.implementationOwn(list: List<String>) {
     list.forEach { dependency ->
         add("implementation", dependency)
     }
 }
 
-fun DependencyHandler._androidTestImplementation(list: List<String>) {
+fun DependencyHandler.androidTestImplementationOwn(list: List<String>) {
     list.forEach { dependency ->
         add("androidTestImplementation", dependency)
     }
 }
 
-fun DependencyHandler._testImplementation(list: List<String>) {
+fun DependencyHandler.testImplementationOwn(list: List<String>) {
     list.forEach { dependency ->
         add("testImplementation", dependency)
     }
 }
 
-fun DependencyHandler._debugImplementation(list: List<String>) {
+fun DependencyHandler.debugImplementationOwn(list: List<String>) {
     list.forEach { dependency ->
         add("debugImplementation ", dependency)
     }
