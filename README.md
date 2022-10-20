@@ -8,7 +8,7 @@
 ## How it looks
 
 <p align="center">
-    <img width="270" height="555" src="gitdata/app.gif">
+    <img width="270" height="555" src="gitFiles/emoviemp4.gif">
 </p>
   
 
@@ -27,7 +27,7 @@ Domain: module responsible for Use Cases, entities, Repository
 
 ### ----------------------------------------------------------------------------------------------
 
-![alt text](gitdata/diagram.png)
+![alt text](gitFiles/arquitecture.png)
 
   
 ### ----------------------------------------------------------------------------------------------
