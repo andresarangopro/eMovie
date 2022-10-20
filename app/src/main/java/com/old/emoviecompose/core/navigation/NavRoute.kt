@@ -2,6 +2,7 @@ package com.old.emoviecompose.core.navigation
 
 
 import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -10,7 +11,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
+import com.google.accompanist.navigation.animation.composable
 
 /**
  * A route the app can navigate to.
@@ -31,6 +32,7 @@ interface NavRoute<T : RouteNavigator>: Nav {
     /**
      * Generates the composable for this route.
      */
+    @OptIn(ExperimentalAnimationApi::class)
     fun composable(
         builder: NavGraphBuilder,
         navHostController: NavHostController

@@ -18,6 +18,7 @@ object Versions {
     const val hiltVersion = "1.0.0"
     const val navigationVersion = "2.4.2"
     const val material3Version = "1.0.0-alpha13"
+    const val navigationAnimation = "0.26.5-rc"
 }
 
 object DebugDependencies{
@@ -80,6 +81,7 @@ object AppDependencies {
     const val navigation = "androidx.navigation:navigation-compose:${Versions.navigationVersion}"
     const val material = "androidx.compose.material3:material3:${Versions.material3Version}"
     const val materialWindowSize = "androidx.compose.material3:material3-window-size-class:${Versions.material3Version}"
+    const val navigationAnimation = "com.google.accompanist:accompanist-navigation-animation:${Versions.navigationAnimation}"
 
     //test libs
     //testImplementation
@@ -112,6 +114,7 @@ object AppDependencies {
         add(material)
         add(materialWindowSize)
         add(coilCompose)
+        add(navigationAnimation)
     }
 
     val coroutinesLibraries = arrayListOf<String>().apply {

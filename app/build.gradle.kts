@@ -61,11 +61,8 @@ android {
 dependencies {
     //std lib
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(project(mapOf("path" to ":data")))
     implementation(project(mapOf("path" to ":domain")))
-
-
-
+    implementation(project(mapOf("path" to ":data")))
 
     //app libs
     _implementation(AppDependencies.appLibraries)
