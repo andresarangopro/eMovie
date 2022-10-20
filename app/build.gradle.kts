@@ -1,5 +1,7 @@
 plugins {
     id("com.android.application")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
     kotlin("android")
 }
 
@@ -20,7 +22,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -57,10 +59,18 @@ android {
 dependencies {
     //std lib
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(mapOf("path" to ":domain")))
+    implementation(project(mapOf("path" to ":data")))
+
     //app libs
-    implementation(AppDependencies.appLibraries)
+    implementationOwn(AppDependencies.appLibraries)
+    implementationOwn(AppDependencies.coroutinesLibraries)
+    implementationOwn(AppDependencies.retrofitLibraries)
+    implementationOwn(AppDependencies.hiltLibraries)
     //test libs
-    testImplementation(AppDependencies.testLibraries)
-    androidTestImplementation(AppDependencies.androidTestLibraries)
+    testImplementationOwn(AppDependencies.testLibraries)
+    androidTestImplementationOwn(AppDependencies.androidTestLibraries)
+
+    kapt(Hilt.compiler)
 
 }
