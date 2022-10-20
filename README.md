@@ -19,7 +19,7 @@ There are three main layers
 
 Data: module responsible for Network and Database
 
-Presentation: this module is responsible for the view using MVVM with jetpack composables and view models
+Presentation: this module is responsible for show UI and interact with the another layers using MVVM with jetpack composables and view models
 
 Domain: module responsible for Use Cases, entities, Repository
 
