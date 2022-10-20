@@ -3,7 +3,7 @@
 
 [![Framework](https://img.shields.io/badge/Framework-Android%20Studio-blue)](https://developer.android.com/studio?gclid=CjwKCAjwtdeFBhBAEiwAKOIy52mw_xYp6g53m4PHlqEt9g4vckcNL16ylXAxdM8r4RY-yENilB4SrBoCDw0QAvD_BwE&gclsrc=aw.ds)
 
-### ----------------------------------------------------------------------------------------------
+
 
 ## How it looks
 
@@ -12,7 +12,6 @@
 </p>
   
 
-### ----------------------------------------------------------------------------------------------
 
 ## Architecture  
 
@@ -25,12 +24,10 @@ Presentation: this module has all android framework using MVVM with jetpack comp
 Domain: module responsible for Use Cases, entities, Repository
 
 
-### ----------------------------------------------------------------------------------------------
 
 ![alt text](gitFiles/arquitecture.png)
 
-  
-### ----------------------------------------------------------------------------------------------
+
 
 ## Troubleshooting
   
