@@ -30,13 +30,14 @@ Domain: module responsible for Use Cases, entities, Repository
 
 
 ## Troubleshooting
+add on local.properties yourt TMDB Api v4 key as: 
+TMDB_API_KEY= <YOUR_API_KEY>
   
 ## API
 This project implements TMDB's API. More about in:
 https://www.themoviedb.org/
 
-add on local.properties yourt TMDB Api v4 key as: 
-TMDB_API_KEY= <YOUR_API_KEY>
+
 
 
   
