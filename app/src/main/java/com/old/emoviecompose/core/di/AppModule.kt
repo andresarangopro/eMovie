@@ -2,13 +2,17 @@ package com.old.emoviecompose.core.di
 
 import android.app.Application
 import android.content.Context
-import com.old.data.Network
+import androidx.room.Room
+import com.old.data.LocalMovieDataSource
+import com.old.data.RepositoryImp
+import com.old.domain.databasemanager.*
 import com.old.domain.repository.ApiConstants
 import com.old.domain.repository.MoviesRepository
 import com.old.emoviecompose.domain.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +25,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
+
+    private val DATABASE_NAME = "movies_db"
+
     @Provides
     fun provideContext(
         app: Application
@@ -28,7 +35,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideMoviesRepository(dataSource: Network): MoviesRepository = dataSource
+    fun provideMoviesRepository(dataSource: RepositoryImp): MoviesRepository = dataSource
 
     @Provides
     @Singleton
@@ -55,4 +62,34 @@ class AppModule {
         }
         return okHttpClientBuilder.build()
     }
+
+    @Provides
+    @Singleton
+    fun provideMovieDatabase(
+        @ApplicationContext app: Context
+    ): MovieDatabase = Room.databaseBuilder(
+        app,
+        MovieDatabase::class.java,
+        DATABASE_NAME
+    ).build()
+
+    @Provides
+    @Singleton
+    fun providesMovieLocalDataSource(
+        localMovieDatasourceImpl: LocalMovieDataSource
+    ): ILocalDataSource {
+        return localMovieDatasourceImpl
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieDao(db: MovieDatabase): MovieDao = db.movieDao()
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailDao(db: MovieDatabase): MovieDetailDao = db.movieDetailDao()
+
+    @Provides
+    @Singleton
+    fun provideTrailerDao(db: MovieDatabase): TrailerDao = db.trailerDao()
 }

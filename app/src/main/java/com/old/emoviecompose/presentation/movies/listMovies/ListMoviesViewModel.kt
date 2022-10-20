@@ -38,7 +38,7 @@ class ListMoviesViewModel @Inject constructor(
     fun loadTopRatedMovies() =
         getMoviesUseCase(GetMoviesUseCase.Params("top_rated"), viewModelScope) { it.fold(::handleFailure, ::handleUpcomingMovieList) }
 
-    private fun handleUpcomingMovieList( movies: List<Movie>,) {
+    private fun handleUpcomingMovieList( movies: List<Movie>) {
         _moviesUpcoming.value = movies.map { MovieView(it.id, it.poster) }
     }
 

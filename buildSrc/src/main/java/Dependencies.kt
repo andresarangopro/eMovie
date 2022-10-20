@@ -54,6 +54,14 @@ object Hilt {
     const val testing = "com.google.dagger:hilt-android-testing:$version"
 }
 
+object Room {
+    const val roomVersion = "2.2.5"
+
+    const val roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    const val roomLib = "androidx.room:room-runtime:$roomVersion"
+    const val roomktx = "androidx.room:room-ktx:$roomVersion"
+}
+
 
 
 object AppDependencies {
