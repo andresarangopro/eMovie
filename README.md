@@ -76,7 +76,7 @@ https://www.themoviedb.org/
 
  1. The single responsibility principle consist in that every class, module, or function in a program should have one responsibility/purpose in a program. As a commonly used definition, "every class should have only one reason to change".
  
- 2. For me the main characteristics of a clean code is that it is easy to read, easy to maintain code with high cohesion and low coupling.
+ 2. For me the main characteristics of a clean code is that it is easy to read,easy to test and easy to maintain the clean code always used to have a high cohesion and low coupling.
  
  3. I did not make the filter of recommended movies because it is not a clear point and there are many ways to solve and it was not understandable to me that it was expected from the ui as I could leave a filter for the language with the List of ISO 639-1 codes showing a list with the ISO language name and depending on picked filter the list already obtained or make the TMDB query, for the year you could make an input of a valid year and also filter on the list obtained or a new request to TMDB
 
