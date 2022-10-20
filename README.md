@@ -39,7 +39,6 @@ add on local.properties yourt TMDB Api v4 key as:
 TMDB_API_KEY= <YOUR_API_KEY>
 
 
-### ----------------------------------------------------------------------------------------------
   
 ## Libraries Used :
 
@@ -71,5 +70,7 @@ TMDB_API_KEY= <YOUR_API_KEY>
 * [Leak Canary](https://github.com/square/leakcanary)
 
 * [Dagger Hilt](https://mvnrepository.com/artifact/com.google.dagger/hilt-android)
+
+* [Room](https://developer.android.com/training/data-storage/room)
 
 * [Coil](https://coil-kt.github.io/coil/compose/) 
