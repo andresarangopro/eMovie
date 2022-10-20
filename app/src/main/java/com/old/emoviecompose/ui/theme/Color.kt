@@ -13,6 +13,7 @@ val Yellow = Color(0xFFFFD24C)
 val White = Color(0xFFFFFFFF)
 val GrayLight = Color(0xFFF5F4F4)
 val GrayLight_2 = Color(0xFFDBDBDB)
+val Transparent = Color(0x00000000)
 /**
  * Primary Color Definition
  */

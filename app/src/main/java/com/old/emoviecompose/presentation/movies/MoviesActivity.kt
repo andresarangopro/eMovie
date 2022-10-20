@@ -1,5 +1,6 @@
 package com.old.emoviecompose.presentation.movies
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -37,4 +38,9 @@ class MoviesActivity : ComponentActivity(), ActivityActions  {
     override fun openActivity(activityClass: Class<MoviesActivity>) {
         startActivity(Intent(this, activityClass))
     }
+
+    companion object {
+        fun callingIntent(context: Context) = Intent(context, MoviesActivity::class.java)
+    }
+
 }

@@ -8,7 +8,9 @@ import com.old.data.RepositoryImp
 import com.old.domain.databasemanager.*
 import com.old.domain.repository.ApiConstants
 import com.old.domain.repository.MoviesRepository
+import com.old.domain.usecases.INavigator
 import com.old.emoviecompose.domain.BuildConfig
+import com.old.emoviecompose.presentation.movies.navigation.Navigator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,6 +38,8 @@ class AppModule {
     @Provides
     @Singleton
     fun provideMoviesRepository(dataSource: RepositoryImp): MoviesRepository = dataSource
+
+
 
     @Provides
     @Singleton
@@ -80,6 +84,10 @@ class AppModule {
     ): ILocalDataSource {
         return localMovieDatasourceImpl
     }
+
+    @Provides
+    @Singleton
+    fun provideNavigator(navigator: Navigator): INavigator = navigator
 
     @Provides
     @Singleton

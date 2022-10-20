@@ -1,6 +1,7 @@
 package com.old.emoviecompose.custom.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -17,6 +18,7 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -106,15 +108,18 @@ fun verticalGrid(modifier: Modifier = Modifier, movies: List<MovieView>?, moveSc
             items(it.listSizeForRecommendations()) {
                 Card(modifier = Modifier
                     .padding(8.dp)
+                    .background(Color.Transparent)
                     .clickable {
                         movies?.get(it)?.id?.let { it1 -> moveScreen.toDetailScreen(it1) }
-                    },shape = RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp)
+                    },
+                    shape = RoundedCornerShape(8.dp, 8.dp, 8.dp, 8.dp),
                 ) {
                     movies?.get(it)?.poster?.let {
                         ImageResource(url = it,
                             modifier= Modifier
                                 .height(210.dp)
-                                .fillMaxWidth())
+                                .fillMaxWidth()
+                        )
                     }
                 }
             }

@@ -3,8 +3,6 @@ package com.old.emoviecompose.presentation.movies.detailMovies
 
 
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,10 +18,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.SavedStateHandle
 import androidx.navigation.NamedNavArgument
@@ -199,9 +195,7 @@ fun ContentPage(
                                             top = 8.dp
                                         )) {
                                     Button(
-                                        onClick = {
-                                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(detailMovieViewModel.getLinkTrailer()))
-                                            context.startActivity(intent)
+                                        onClick = {detailMovieViewModel.playTrailer()
                                         },
                                         modifier = Modifier
                                             .border( width = 2.dp,

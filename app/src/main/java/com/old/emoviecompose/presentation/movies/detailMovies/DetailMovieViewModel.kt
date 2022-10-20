@@ -6,9 +6,9 @@ import com.old.domain.model.MovieDetails
 import com.old.domain.model.Trailer
 import com.old.domain.usecases.GetMoviesDetailsUseCase
 import com.old.domain.usecases.GetTrailerListUseCase
+import com.old.domain.usecases.PlayTrailerUseCase
 import com.old.emoviecompose.core.navigation.RouteNavigator
 import com.old.emoviecompose.core.platform.BaseViewModel
-import com.old.emoviecompose.presentation.movies.listMovies.ListMoviesRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -18,10 +18,11 @@ class DetailMovieViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val routeNavigator: RouteNavigator,
     private val getMoviesDetailsUseCase: GetMoviesDetailsUseCase,
-    private val getTrailerListUseCase: GetTrailerListUseCase
+    private val getTrailerListUseCase: GetTrailerListUseCase,
+    private val playTrailerUseCase: PlayTrailerUseCase
 ): BaseViewModel<EventsDetailViewModel, StatesDetailMovieViewModel>(), RouteNavigator by routeNavigator {
 
-     private val _index = DetailMovieScreenRoute.getIndexFrom(savedStateHandle)
+     private val _index:Int = DetailMovieScreenRoute.getIndexFrom(savedStateHandle)
      val index = _index
 
     private val _movieDetails: MutableLiveData<MovieDetails> = MutableLiveData()
@@ -37,6 +38,8 @@ class DetailMovieViewModel @Inject constructor(
     fun toMainScreen(){
         navigateUp()
     }
+
+    fun playTrailer() = playTrailerUseCase(PlayTrailerUseCase.Params(getTrailer().key), viewModelScope)
 
     fun loadMovieDetails(movieId: Int) =
     getMoviesDetailsUseCase(GetMoviesDetailsUseCase.Params(movieId), viewModelScope) {

@@ -10,15 +10,16 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.platform.LocalContext
 
 
 private val DarkColorPalette = darkColorScheme(
-    primary = Color.Transparent,
-    onPrimary = Color.Transparent,
+    primary = Transparent,
+    onPrimary =Transparent,
     primaryContainer = Yellow30,
     onPrimaryContainer = Yellow90,
-    inversePrimary = Yellow40,
+    inversePrimary = Red1,
     secondary = DarkYellow80,
     onSecondary = DarkYellow20,
     secondaryContainer = DarkYellow30,
@@ -40,13 +41,13 @@ private val DarkColorPalette = darkColorScheme(
 )
 
 private val LightColorPalette = lightColorScheme(
-    primary = Color.Transparent,
-    onPrimary = Color.White,
+    primary = Transparent,
+    onPrimary = White,
     primaryContainer = Yellow90,
-    onPrimaryContainer = Color.White,
+    onPrimaryContainer = White,
     inversePrimary = Red1,
-    secondary = Color.White,
-    onSecondary = Color.Black,
+    secondary = White,
+    onSecondary =Black,
     secondaryContainer = DarkYellow90,
     onSecondaryContainer = DarkYellow10,
     tertiary = Orange40,
